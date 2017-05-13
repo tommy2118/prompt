@@ -1,0 +1,17 @@
+#!/bin/bash
+# vim:set ft=sh sw=2 sts=2:
+
+dc="$(which docker-compose)"
+docker="$(which docker)"
+
+for i in $(ls -x config/*.example.*); do test -f ${i/\.example/} || cp ${i} ${i/\.example/}; done
+
+${dc} up --build -d
+${dc} stop
+if [[ -e db/schema.rb ]]; then
+  ${dc} run web rails db:setup
+  ${dc} run web rails db:migrate
+  ${dc} run web rails db:test:prepare
+  # ${dc} run web rails db:populate
+  ${dc} run web rails log:clear tmp:clear
+fi

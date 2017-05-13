@@ -1,0 +1,5 @@
+#!/bin/bash
+# vim:set ft=sh sw=2 sts=2:
+
+branch_name=$(git rev-parse --abbrev-ref HEAD)
+git push -f staging ${branch_name}:master
