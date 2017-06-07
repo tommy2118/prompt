@@ -1,0 +1,14 @@
+<% if current_user %>
+  <h2>Prompt in Product Design</h2>
+  <h1>Google design sprints are for the birds, unless you're a preschool teacher...</h1>
+  <%= image_tag current_user.image_url, alt: current_user.username %>
+  <%= link_to "Start Medium Draft", "#", class: "waves-effect waves-light btn" %>
+  <%= link_to "Log Out", logout_path,  class: "waves-effect waves-light btn", 
+    method: :delete %>
+<% end %>
+
+<% if !current_user %>
+  <h2>Stuck on your next post?</h2>
+  <h1>Simple creative prompts for product, design, and technical writers.<h1>
+<%= link_to "Connect to Medium", "/auth/medium", class: "waves-effect waves-light btn" %>
+<% end %>
