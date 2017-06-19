@@ -1,0 +1,2 @@
+class Cue < ApplicationRecord
+end

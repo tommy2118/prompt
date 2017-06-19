@@ -2,14 +2,14 @@ require "net/http"
 
 class MediumAPI
 
-  def self.create_draft_post(user_id, token, title)
+  def self.create_draft_post(user_id, token, body)
     uri = URI.parse("https://api.medium.com")
     uri.path = "/v1/users/#{user_id}/posts"
     req = Net::HTTP::Post.new(uri)
     content = {
-      "title" => "Prompts test",
+      "title" => "#{body}",
       "contentFormat" => "html",
-      "content" => "<h1>Prompts Test</h1>",
+      "content" => "<h1>#{body}</h1>",
       "canonicalUrl" => "",
       "tags" => [],
       "publishStatus" => "draft"
