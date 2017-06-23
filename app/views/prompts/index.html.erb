@@ -1,12 +1,17 @@
 <div class="row">
-  <div class="col s12">
+  <div class="col s12 offset-s3">
     <% if current_user %>
-      <p>Prompt in <%= cue.category %></p>
-      <h5><%= cue.body %></h5>
+      <div class="row">
+        <div class="col s6">
+          <%= link_to "Log Out", logout_path,  class: "right",
+            method: :delete %>
+        </div>
+      </div>
+      <p>Prompt in <%= random_cue.category %></p>
+      <h5><%= random_cue.body %></h5>
       <%= image_tag current_user.image_url, alt: current_user.username, size: 36, class: "left" %>
       <%= link_to "Start Medium Draft", "/draft", class: "waves-effect waves-light btn" %>
-      <%= link_to "Log Out", logout_path,  class: "right waves-effect waves-light btn",
-        method: :delete %>
+      <%= link_to "Get New Prompt", "/new", class: "waves-effect waves-light btn" %>
     <% end %>
 
     <% if !current_user %>

@@ -26,6 +26,6 @@ class MediumAPI
     }
 
     data = JSON.parse(res.body)
-    data['data']['url']
+    @url = data['data'] ? data['data']['url'] : nil
   end
 end
